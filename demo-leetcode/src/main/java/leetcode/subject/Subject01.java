@@ -1,8 +1,10 @@
 package leetcode.subject;
 
+import lombok.ToString;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * <p>
  * Desc:
  */
+@ToString
 public class Subject01 {
 
 
@@ -86,6 +89,77 @@ public class Subject01 {
         }
 
         return Collections.max(lengthList);
+    }
+
+    @Test
+    public void print() {
+        System.out.println("eee");
+    }
+
+
+    @Test
+    public void testOpenLock() {
+        String[] deadendsArr = {"8887","8889","8878","8898","8788","8988","7888","9888"};
+        String target = "8888";
+
+        System.out.println(openLock(deadendsArr, target));
+    }
+
+    private int openLock(String[] deadends, String target) {
+        // 0000 直接返回
+        List<String> deadendsList = Arrays.asList(deadends);
+        if (deadendsList.contains("0000") || deadendsList.contains(target)) {
+            return -1;
+        }
+        List<String> notList = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            List<String> around = around(target, i);
+            notList.addAll(around);
+        }
+        if (deadendsList.containsAll(notList)) {
+            return -1;
+        }
+
+        // target位置上有没有数值
+
+
+
+
+
+        return 0;
+    }
+
+    private List<String> around(String target, int index) {
+        List<String> aroundList = new ArrayList<>();
+        String iStr = String.valueOf(target.charAt(index));
+        int i = Integer.parseInt(iStr);
+        int next = next(i);
+        int pre = pre(i);
+        String preStr = target.substring(0, index);
+        String postStr = target.substring(index + 1);
+        aroundList.add(preStr + next + postStr);
+        aroundList.add(preStr + pre + postStr);
+        return aroundList;
+    }
+
+    private int next(int a) {
+        if (a < 0 || a > 9) {
+            return -1;
+        }
+        if (a == 9) {
+            return 0;
+        }
+        return a + 1;
+    }
+
+    private int pre(int a) {
+        if (a < 0 || a > 9) {
+            return -1;
+        }
+        if (a == 0) {
+            return 9;
+        }
+        return a - 1;
     }
 
 
