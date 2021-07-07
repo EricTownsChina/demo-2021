@@ -3,10 +3,7 @@ package leetcode.subject;
 import lombok.ToString;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Eric 840017241@qq.com
@@ -16,6 +13,72 @@ import java.util.List;
  */
 @ToString
 public class Subject01 {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextLine()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String inStr = in.nextLine();
+            if ("".equals(inStr.trim())) {
+                continue;
+            }
+
+            String[] arr = inStr.split(",");
+
+            StringBuilder numberStr = new StringBuilder();
+            for (String i : arr) {
+                numberStr.append(i);
+            }
+            String s = numberStr.toString();
+
+            long number = Long.parseLong(s);
+            number++;
+            s = String.valueOf(number);
+            int length = s.length();
+            long[] result = new long[length];
+            for (int i = 0; i < length; i++) {
+                long l = Long.parseLong(String.valueOf(s.charAt(i)));
+                result[i] = l;
+                System.out.print(l + ",");
+            }
+        }
+    }
+
+    @Test
+    public void testXy() {
+
+
+
+//        long[] arr = new long[] {9L};
+//        System.out.println(Arrays.toString(handle(arr)));
+
+
+    }
+
+    private long[] handle(long[] arr) {
+        if (arr[0] == 0) {
+            return new long[] {1};
+        }
+
+        StringBuilder numberStr = new StringBuilder();
+        for (long i : arr) {
+            numberStr.append(i);
+        }
+        String s = numberStr.toString();
+
+        long number = Long.parseLong(s);
+        number++;
+        s = String.valueOf(number);
+        int length = s.length();
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = Long.parseLong(String.valueOf(s.charAt(i)));
+        }
+
+        return result;
+
+    }
+
+
 
 
     /**
