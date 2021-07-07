@@ -13,10 +13,10 @@ public class JavaHeapOOM {
 
     public static void main(String[] args) {
         // list分配在heap中
-        List<JavaHeapOOM> list = new ArrayList<>();
-        while (true) {
-            list.add(new JavaHeapOOM());
-        }
+//        List<JavaHeapOOM> list = new ArrayList<>();
+//        while (true) {
+//            list.add(new JavaHeapOOM());
+//        }
     }
 
 }
