@@ -1,6 +1,7 @@
 package order.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import java.util.concurrent.Future;
  * @date 2021/7/6 14:51
  * <p>
  * Desc: order 订单服务对外暴露的接口
+ * 服务注册到注册中心上
  */
 @RestController
 public class OrderService {

@@ -5,4 +5,12 @@ server:
 
 spring:
   application:
-    name: spring-cloud-order-service
+    name: cloud-order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.132.106.79:8848
+        namespace: 4d480125-9c14-4609-998b-494681544a12
+
+
+

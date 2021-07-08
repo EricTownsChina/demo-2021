@@ -1,13 +1,18 @@
 spring:
   application:
-    name: spring-cloud-user-service
+    name: cloud-user-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.132.106.79:8848
+        namespace: 4d480125-9c14-4609-998b-494681544a12
 
 server:
   port: 8088
 
 
 
-spring-cloud-order-service:
-  ribbon:
-    listOfServers:
-      localhost:8081,localhost:8082
+#spring-cloud-order-service:
+#  ribbon:
+#    listOfServers:
+#      localhost:8081,localhost:8082

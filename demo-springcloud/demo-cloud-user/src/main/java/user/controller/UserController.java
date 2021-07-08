@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Eric 840017241@qq.com
@@ -30,8 +31,8 @@ public class UserController {
     }
 
 
-    @Resource
-    private LoadBalancerClient loadBalancer;
+//    @Resource
+//    private LoadBalancerClient loadBalancer;
 
     @GetMapping("/user/{id}")
     public String findById(@PathVariable("id") String id) {
@@ -43,7 +44,7 @@ public class UserController {
 //
 //        return restTemplate.getForObject(url + service, String.class);
 
-        return restTemplate.getForObject("http://spring-cloud-order-service/orders", String.class);
+        return restTemplate.getForObject("http://cloud-order-service/orders", String.class);
 
     }
 
