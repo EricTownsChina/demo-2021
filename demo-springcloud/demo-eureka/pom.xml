@@ -5,37 +5,28 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.5.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>priv.eric</groupId>
-    <artifactId>demo-springcloud</artifactId>
-    <version>0.0.1</version>
-    <name>demo-springcloud</name>
-    <description>Demo project for spring cloud</description>
-    <packaging>pom</packaging>
+    <artifactId>demo-eureka</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo-eureka</name>
+    <description>Demo project for Spring eureka</description>
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
     </properties>
-
-    <!-- spring cloud alibaba版本 -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.2.1.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -46,23 +37,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- nacos服务注册与发现 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>2.2.1.RELEASE</version>
-        </dependency>
-        <!-- nacos配置中心 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>2.2.1.RELEASE</version>
-        </dependency>
-
-
-
     </dependencies>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

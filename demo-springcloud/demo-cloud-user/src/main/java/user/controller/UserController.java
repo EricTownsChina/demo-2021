@@ -1,16 +1,14 @@
 package user.controller;
 
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import user.servcie.FeignOrderService;
 
 import javax.annotation.Resource;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Eric 840017241@qq.com
@@ -30,6 +28,9 @@ public class UserController {
         return new RestTemplate();
     }
 
+    @Resource
+    private FeignOrderService feignOrderService;
+
 
 //    @Resource
 //    private LoadBalancerClient loadBalancer;
@@ -44,7 +45,12 @@ public class UserController {
 //
 //        return restTemplate.getForObject(url + service, String.class);
 
-        return restTemplate.getForObject("http://cloud-order-service/orders", String.class);
+
+
+//        return restTemplate.getForObject("http://cloud-order-service/orders", String.class);
+
+
+        return feignOrderService.orderService();
 
     }
 

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: cloud-eureka
+  freemarker:
+    prefer-file-system-access: false
+
+
+server:
+  port: 9090
+
+
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:9090/eureka
+    fetch-registry: false
