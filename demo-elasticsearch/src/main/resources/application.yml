@@ -13,6 +13,6 @@ server:
 spring:
   elasticsearch:
     rest:
-      uris: http://10.1.122.226:9200
+      uris: http://localhost:9200
 
 
