@@ -13,6 +13,7 @@ import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,12 +63,20 @@ public class EsSearchTest {
 
     @GetMapping("/search")
     public String search() {
+        // search setting
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         MatchQueryBuilder matchQueryBuilder = new MatchQueryBuilder("userName", "Eric");
         sourceBuilder.query(matchQueryBuilder);
 
+        // Highlight setting
+        HighlightBuilder highlightBuilder = new HighlightBuilder();
+        highlightBuilder.requireFieldMatch(false).field("userName").preTags("<em>").postTags("</em>");
+        sourceBuilder.highlighter(highlightBuilder);
+
+        // do search
         List<UserInfo> resultList = searchServer.getResultList("demo.client.test.01", sourceBuilder, UserInfo.class);
 
+        // result handle
         for (UserInfo userInfo : resultList) {
             System.out.println("userInfo : " + userInfo);
         }

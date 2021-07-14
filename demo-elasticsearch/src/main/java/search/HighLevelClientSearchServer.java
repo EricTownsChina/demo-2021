@@ -76,15 +76,11 @@ public final class HighLevelClientSearchServer {
                 for (Text text : titleTexts) {
                     highFieldSb.append(text);
                 }
-                //将追加了高亮标签的串值重新填充到对应的对象
+                // 将追加了高亮标签的串值重新填充到对应的对象
                 try {
                     Field field = t.getClass().getDeclaredField(fieldName);
                     field.setAccessible(true);
-//                    try {
-                    field.set(field, highFieldSb.toString());
-//                    } catch (IllegalAccessException ignore) {
-//
-//                    }
+                    field.set(t, highFieldSb.toString());
                 } catch (NoSuchFieldException | IllegalAccessException ignore) {
 
                 }
